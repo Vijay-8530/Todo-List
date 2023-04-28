@@ -1,7 +1,8 @@
-const addTodo = document.querySelector('.add')
+const addTodo = document.querySelector('.add') // console.log(list)
 const list = document.querySelector('.todos')
-const search = document.querySelector('.search input')
-// console.log(search)
+const search = document.querySelector('.search input') // console.log(search)
+// Add todos
+
 const generatemplet = todo => {
     const html = `<li class="list-group-item d-flex justify-content-between align-items-center">
     <span>${todo}</span>
@@ -19,7 +20,6 @@ addTodo.addEventListener('submit', e => {
 })
 // delet todos
 list.addEventListener('click', e => {
-    console.log(e)
     if (e.target.classList.contains('delet')) {
         e.target.parentElement.remove()
     }
@@ -27,7 +27,7 @@ list.addEventListener('click', e => {
 // search todos
 
 const filterTodos = term => {
-    console.log(term)
+    // console.log(term)
     Array.from(list.children)
         .filter(e => !e.textContent.includes(term))
         .forEach(e => e.classList.add('filtered'))
@@ -37,7 +37,7 @@ const filterTodos = term => {
         .forEach(e => e.classList.remove('filtered'))
 }
 
-search.addEventListener('keyup', () => {
+search.addEventListener('keydown', () => {
     const term = search.value.trim()
     // console.log(term)
     filterTodos(term)
